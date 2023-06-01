@@ -1,0 +1,40 @@
+
+@inherits TestListBase
+@if (Category != null)
+{
+    <div class="@(Category.LabTests.Count==1?"test-grid-col-one":"test-grid")">
+        @foreach (var test in Category.LabTests)
+            {
+                var selected = SelectedLabTests.Contains(test.Id);
+                if (selected)
+                {
+                    test.Selected = true;
+                }
+                <div class="@(selected?"test-card test-card-active":"test-card")">
+                    <div class="test-name">
+                      @* <RadzenCheckBox TValue="bool" TriState="true" @bind-Value="test.Selected" Change=@(args => OnChange(Category, test)) style="padding-right: 10px"></RadzenCheckBox> *@
+                      @test.Name
+                    </div>
+                    <div class="test-price">
+                        Price:  @test.Price
+                    </div>
+                    <div class="test-button">
+                        <div>
+                            <span class="between-text-button" onclick="@(() => OnShow(test))"> <img class="text-with-button" src="images/show.png" alt=""/>Show</span>
+                        </div>
+                        <div>
+                            @if (selected)
+                            {
+                                <span class="between-text-primary" onclick="@(() => OnSelect(Category, test))"> <img class="text-with-button" src="images/check.png" alt=""/>Selected</span>
+                            }
+                            else
+                            {
+                                <span class="between-text-primary" onclick="@(() => OnSelect(Category, test))"> <img class="text-with-button" src="images/check.png" alt=""/>Add to order</span>
+                            }
+                        </div>
+                    </div>
+                      </div>
+            }
+        </div>
+     
+}

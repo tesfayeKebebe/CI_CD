@@ -1,0 +1,42 @@
+@using System.Globalization
+@attribute [Authorize]
+@page "/draft-list"
+@inherits DraftBase
+<div class="main-content top">
+    @if (IsSpinner)
+    {
+        <div class="spinner"> </div>
+    }
+    <Virtualize Items="SelectedTestDetails" Context="item" OverscanCount="20">
+        <div class="content-item">
+            <div class="flex-table">
+                <div class="flex-table-col">
+                    <div class="flex-col col-Padding">
+                        @item.PatientName
+                    </div>
+                    <div class="flex-col col-Padding">
+                        @item.PhoneNumber
+                    </div>
+                </div>
+                <div class="flex-table-col">
+                    <div class="flex-col col-Padding">
+                        Price: @item.Amount.ToString("#,00", CultureInfo.CurrentCulture.NumberFormat)
+                    </div>
+                    <div class="flex-col col-Padding">
+                        @item.Date.ToString("MMM")[..3]
+                        @item.Date.ToString("dd/yyyy:hh:mm")
+                    </div>
+                </div>
+                <div class="flex-table-col">
+                    <div onclick="@(() => OnDone(item))" class="flex-col  col-Padding ">
+                        <span class="between-text-button"> <img class="text-with-button" src="_content/SharedComponent/images/approve.png" alt=""/>Approve</span>
+                    </div>
+                    <div onclick="@(() => OnDelete(item.TransactionNumber))" class="flex-col  col-Padding ">
+                        <span class="between-text-button"> <img class="text-with-button" src="_content/SharedComponent/images/delete.png" alt=""/>Delete</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </Virtualize>
+
+</div>

@@ -1,0 +1,37 @@
+@attribute [Authorize]
+@page "/user-branch"
+@inherits BranchListBase
+<AccountTab></AccountTab>
+<div class="main-content top-setting">
+    @if (IsSpinner)
+    {
+        <div class="spinner"> </div>
+    }
+    <div class="setting-item">
+    <div class="flex-row">
+        <div class="flex-col  col-Padding text-align-end">
+                <img onclick="@(()=>OnAdd())" class="button-image" src="_content/SharedComponent/images/add.png" alt="" />
+        </div>
+    </div>
+    @if(BranchDetails !=null)
+    {
+        <Virtualize Items="BranchDetails" Context="branch" OverscanCount="20">
+          <div class="bottom-line">
+              <div class="flex-table">
+                  <div class="flex-col col-Padding">
+                      @branch.Name
+                  </div>
+                  <div class="flex-table-col">
+                      <div  class="flex-col  col-Padding ">
+                                <img onclick="@(() => OnEdit(branch))" class="button-image" src="_content/SharedComponent/images/edit.png" alt="" />
+                      </div>
+                      <div class="flex-col  col-Padding ">
+                          <img onclick="@(() => OnDelete(branch.Id!))" class="button-image" src="_content/SharedComponent/images/delete.png" alt=""/>
+                      </div>
+                  </div>           
+              </div>
+              </div>            
+        </Virtualize>
+    }
+    </div>
+    </div>

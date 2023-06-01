@@ -1,0 +1,35 @@
+@page "/sample-type"
+@using RazorShared.Pages.Settings.SampleTypes;
+@inherits SampleTypesBase
+<SettingTab></SettingTab>
+<div class="main-content top-setting">
+<div class="setting-item">
+    <div class="flex-row">
+        <div onclick="@OnAdd" class="flex-col  col-Padding text-align-end">
+            <img class="button-image" src="_content/RazorShared/images/add.png" alt=""/>
+        </div>
+    </div>
+    @if(SampleTypeDetails !=null)
+    {
+        <Virtualize Items="SampleTypeDetails" Context="sample" OverscanCount="20">
+            <div class="bottom-line">
+                <div class="flex-table">
+                    <div class="flex-col col-Padding">
+                        @sample!.Name
+                    </div>
+                    <div class="flex-table-col">
+                        <div onclick="@(() => OnEdit(sample))" class="flex-col  col-Padding ">
+                            <img class="button-image" src="_content/RazorShared/images/edit.png" alt=""/>
+                        </div>
+                        <AuthorizeView Roles="administrator">
+                            <div onclick="@(() => OnDelete(sample.Id))" class="flex-col  col-Padding ">
+                                <img class="button-image" src="_content/RazorShared/images/delete.png" alt=""/>
+                            </div>
+                        </AuthorizeView>
+                    </div>            
+                </div>
+                </div>            
+        </Virtualize>
+    }
+</div>
+</div>

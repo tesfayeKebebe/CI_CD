@@ -1,0 +1,5 @@
+2023-02-22T18:00:00.7766874+03:00  [INF] Now listening on: "https://localhost:7241" (d826f4b8)
+2023-02-22T18:00:00.7843995+03:00  [INF] Now listening on: "http://localhost:5026" (d826f4b8)
+2023-02-22T18:00:00.7897034+03:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2023-02-22T18:00:00.7940408+03:00  [INF] Hosting environment: "Development" (bc5a1a4e)
+2023-02-22T18:00:00.7965246+03:00  [INF] Content root path: "E:\Startups\Latest\healthservice\src\Web.API" (cc26f24e)

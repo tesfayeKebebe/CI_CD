@@ -1,0 +1,45 @@
+﻿@attribute [Authorize]
+@page "/selected-lab-test"
+@inherits SelectedLabTestBase
+<div class="top">
+
+    @if (ViewModels != null)
+    {
+        <div class="content-item">
+            <div class="bottom-line">
+                <div class="flex-row">
+                    <div class="flex-col col-Padding">
+                        <div class="category">
+                            Order Details (@Count)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-row">
+                <div class="flex-col col-Padding">
+                    Total payment :@TotalPrice
+                </div>
+            </div>
+            <div class="flex-row">
+                <div class="flex-col col-Padding">
+                    <span class="between-text-button" onclick="@OnBack"> <img class="text-with-button" src="_content/SharedComponent/images/back.png" alt=""/>Back</span>
+                </div>
+                @if (IsAuthenticated)
+                {
+                    <div onclick="@OnSubmit" class="flex-col  col-Padding">
+                            <span class="between-text-button" > <img class="text-with-button" src="_content/SharedComponent/images/check.png" alt=""/>Pay</span>
+                        </div>
+                }
+            </div>
+        </div>
+        @foreach (var (_, viewModel) in ViewModels)
+        {
+            <div class="test-grid-col-one">
+                <div class="category">
+                    @viewModel.Name
+                </div>              
+            </div>
+            <SelectCategory ViewModels="viewModel.LabTests"></SelectCategory>
+        }
+    }
+</div>

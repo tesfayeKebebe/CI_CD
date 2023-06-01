@@ -1,0 +1,99 @@
+@page "/home"
+@inherits HomeBase
+<div class="main-content no-submenu-top">
+    <div class="test-grid-col-one" >
+        <div class="test-card">
+            <div class="slider-container">
+                <div class="slider">
+                    <div class="slides">
+                        <input type="radio" name="radio-btn" id="radio1"/>
+                        <input type="radio" name="radio-btn" id="radio2"/>
+                        <input type="radio" name="radio-btn" id="radio3"/>
+                        <input type="radio" name="radio-btn" id="radio4"/>
+                        <div class="slide first">
+                            <img src="Slider/slide-01.jpg" alt=""/>
+                        </div>
+                        <div class="slide">
+                            <img src="Slider/slide-02.jpg" alt=""/>
+                        </div>
+                        <div class="slide ">
+                            <img src="Slider/slide-01.jpg" alt=""/>
+                        </div>
+                        <div class="slide ">
+                            <img src="Slider/slide-02.jpg" alt=""/>
+                        </div>
+                        <div class="navigation-auto">
+                            <div class="auto-btn1"></div>
+                            <div class="auto-btn2"></div>
+                            <div class="auto-btn3"></div>
+                            <div class="auto-btn4"></div>
+                        </div>
+                        <div class="navigation-manual">
+                            <label for="radio1" class="manual-btn"></label>
+                            <label for="radio2" class="manual-btn"></label>
+                            <label for="radio3" class="manual-btn"></label>
+                            <label for="radio4" class="manual-btn"></label>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        @* <div class="test-card"> *@
+        @*     <div class="video-Container"> *@
+        @*         <video controls="controls"> *@
+        @*             <source src="/Videos/mahtot-3f4ba198515acdf3.mp4"/> *@
+        @*         </video> *@
+        @*     </div> *@
+        @* </div> *@
+    </div>
+    <div class="test-grid-col-one">
+        <div class="test-card">
+            <div style="padding-left:20px">
+                <img class="text-with-button" src="images/address.png" alt=""/>  @Model.Location
+            </div>
+            <div style="padding-left:20px">
+                <img class="text-with-button" src="images/telephone.png" alt=""/>  @Model.Telephone
+            </div>
+            <div style="padding-left:20px">
+                <img class="text-with-button" src="images/email.png" alt=""/>  @Model.Email
+            </div>
+        </div>
+    </div>
+    <div class="test-grid-col-one">
+                <div class="test-card">
+                    <div class="partner-container">
+                        <h2>Our Partner</h2>
+                        </div>
+                        <div class="partner-wrapper">
+                            <div class="partner-item">
+                                <img src="Slider/lab1.png" alt=""/>
+                            </div>
+                            <div class="partner-item">
+                                <img src="Slider/lab2.png" alt=""/>
+                            </div>
+                            <div class="partner-item">
+                                <img src="Slider/lab3.png" alt=""/>
+                            </div>
+                            
+                        </div>
+                    </div>
+        @* <div class="test-card"> *@
+        @*     <div class="video-Container"> *@
+        @*         <video controls="controls"> *@
+        @*             <source src="/Videos/mahtot-3f4ba198515acdf3.mp4"/> *@
+        @*         </video> *@
+        @*     </div> *@
+        @* </div> *@
+    </div>
+    <div class="test-grid-col-one">
+        <div class="test-card">
+            <div style="padding-left:20px">
+            @Model.About
+            </div>
+        </div>
+    </div>
+    
+</div>

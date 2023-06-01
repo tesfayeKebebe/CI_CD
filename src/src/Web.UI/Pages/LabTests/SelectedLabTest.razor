@@ -1,0 +1,64 @@
+﻿@page "/selected-lab-test"
+@inherits SelectedLabtTestBase
+<div class="main-content top">
+
+    @if (ViewModels != null)
+    {
+        <div class="content-item">
+            <div class="bottom-line">
+                <div class="flex-row">
+                    <div class="flex-col col-Padding">
+                        <div class="category">
+                            Order Details (@Count)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-row">
+                <div class="flex-col col-Padding">
+                    Total payment :@TotalPrice
+                </div>
+            </div>
+            <div class="flex-row">
+                <div class="flex-col col-Padding">
+                    @*                <div class="button">
+                    <RadzenButton Text="Back" ButtonStyle="ButtonStyle.Dark" Click="@(() => OnBack())"></RadzenButton>
+                </div>*@
+                    <div onclick="@(() => OnBack())" class="flex-col  col-Padding ">
+                        <img class="button-image" src="image/back.png" alt=""/>
+                    </div>
+                </div>
+                @if (IsAuthenticated)
+                {
+                    <div class="flex-col col-Padding">
+                        @*                    <div class="button">
+                        <RadzenButton Text="Confirm" ButtonStyle="ButtonStyle.Success" Click="@(() => OnSubmit())"></RadzenButton>
+                    </div>*@
+                        <div onclick="@(() => OnSubmit())" class="flex-col  col-Padding">
+                            <span class="primary-button">Pay</span>  
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        @foreach (var (_, viewModel) in ViewModels)
+        {
+            <div class="content-item">
+                <div class="bottom-line">
+                    <div class="flex-row">
+                        <div class="flex-col col-Padding">
+                            <div class="category">
+                                @viewModel.Name
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-row">
+                    <div class="flex-col col-padding">
+                        <SelectCategory ViewModels="viewModel.LabTests"></SelectCategory>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>

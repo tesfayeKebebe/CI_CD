@@ -1,0 +1,8 @@
+E:\Startups\Latest\healthservice\src\UI\Health.UI\obj\Release\net7.0\browser-wasm\PubTmp\Out\global.json
+E:\Startups\Latest\healthservice\src\UI\Health.UI\obj\Release\net7.0\browser-wasm\PubTmp\Out\wwwroot\dist\leaflet-routing-machine.css
+E:\Startups\Latest\healthservice\src\UI\Health.UI\obj\Release\net7.0\browser-wasm\PubTmp\Out\wwwroot\dist\leaflet-routing-machine.js
+E:\Startups\Latest\healthservice\src\UI\Health.UI\obj\Release\net7.0\browser-wasm\PubTmp\Out\wwwroot\dist\leaflet-routing-machine.min.js
+E:\Startups\Latest\healthservice\src\UI\Health.UI\obj\Release\net7.0\browser-wasm\PubTmp\Out\wwwroot\dist\leaflet.routing.icons.png
+E:\Startups\Latest\healthservice\src\UI\Health.UI\obj\Release\net7.0\browser-wasm\PubTmp\Out\wwwroot\dist\leaflet.routing.icons.svg
+E:\Startups\Latest\healthservice\src\UI\Health.UI\obj\Release\net7.0\browser-wasm\PubTmp\Out\wwwroot\dist\routing-icon.png
+E:\Startups\Latest\healthservice\src\UI\Health.UI\obj\Release\net7.0\browser-wasm\PubTmp\Out\web.config

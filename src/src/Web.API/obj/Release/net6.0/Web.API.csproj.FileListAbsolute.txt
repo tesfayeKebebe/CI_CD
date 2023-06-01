@@ -1,0 +1,6 @@
+E:\Startups\Latest\healthservice\src\Web.API\obj\Release\net6.0\Web.API.csproj.AssemblyReference.cache
+E:\Startups\Latest\healthservice\src\Web.API\obj\Release\net6.0\Web.API.GeneratedMSBuildEditorConfig.editorconfig
+E:\Startups\Latest\healthservice\src\Web.API\obj\Release\net6.0\Web.API.AssemblyInfoInputs.cache
+E:\Startups\Latest\healthservice\src\Web.API\obj\Release\net6.0\Web.API.AssemblyInfo.cs
+E:\Startups\Latest\healthservice\src\Web.API\obj\Release\net6.0\Web.API.csproj.CoreCompileInputs.cache
+E:\Startups\Latest\healthservice\src\Web.API\obj\Release\net6.0\Web.API.MvcApplicationPartsAssemblyInfo.cache

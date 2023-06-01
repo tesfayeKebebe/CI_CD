@@ -1,0 +1,32 @@
+@using Microsoft.AspNetCore.Components
+@using SharedComponent.Server.Enums
+@inherits PeriodSelectorBase
+<div class="flex-row">
+    <div class="flex-col  col-Padding">
+        <RadzenDropDown Style="width: 100%"
+                        TValue="Period"
+                        @bind-Value="@Period"
+                        Data="@Periods"
+                        ValueProperty="Key"
+                        TextProperty="Value"
+                        Change="@OnPeriodSelectAsync"/>
+    </div>
+</div>
+<div class="flex-row">
+    <div class="flex-col  col-Padding">
+        <RadzenDatePicker Style="width: 100%"
+                          @bind-Value="@From"
+                          ShowTime="true"
+                          Disabled="@IsDateDisable"
+                          Change="@OnTimeSelectAsync"/>
+    </div>
+</div>
+<div class="flex-row">
+    <div class="flex-col col-Padding">
+        <RadzenDatePicker Style="width: 100%"
+                          @bind-Value="@Until"
+                          ShowTime="true"
+                          Disabled="@IsDateDisable"
+                          Change="@OnTimeSelectAsync"/>
+    </div>
+</div>

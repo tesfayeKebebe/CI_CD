@@ -1,0 +1,27 @@
+@using System.Globalization
+@page "/draft-list"
+@inherits DraftBase
+<div class="main-content top">
+    <Virtualize Items="SelectedTestDetails" Context="item" OverscanCount="20">
+                <div class="content-item">
+                    <div class="flex-table">
+                        <div class="flex-col col-Padding">
+                            @item.PatientName
+                        </div>
+                        <div class="flex-col col-Padding">
+                            Price: @item.Amount.ToString("#,00", CultureInfo.CurrentCulture.NumberFormat)
+                        </div>
+                        <div class="flex-table-col">
+                            <div class="flex-col col-Padding">
+                                @item.Date.ToString("MMM")[..3]
+                                @item.Date.ToString("dd/yyyy:hh:mm")
+                            </div>
+                            <div onclick="@(() => OnDone(item))" class="flex-col  col-Padding ">
+                                <span class="between-text-button"> <img class="text-with-button" src="_content/RazorShared/images/approve.png" alt=""/>Approve</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </Virtualize>
+
+</div>

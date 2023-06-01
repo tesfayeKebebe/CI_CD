@@ -1,0 +1,72 @@
+@using SharedComponent.Server.Models.SelectedTestDetails
+@using Microsoft.AspNetCore.Components
+@inherits AddingPatientBase
+@if (IsSpinner)
+{
+    <div class="spinner"> </div>
+}
+<RadzenTemplateForm TItem="SelectedTestDetailModel" Data="Model" >
+    <div class="flex-row ">
+        <div class="flex-col col-Padding">
+            <div class="label">Name:@Data?.PatientName </div>
+        </div>
+    </div>
+        <div class="flex-row ">
+            <div class="flex-col col-Padding">
+                <div class="label">Phone:@Data?.PhoneNumber </div>
+            </div>
+        </div>
+    <div class="bottom-line">
+        <div class="flex-table">
+            <div class="flex-table-col">
+                <div class="flex-col col-Padding">
+                    <RadzenDropDown AllowClear="true" AllowFiltering="true"
+                                    FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
+                                    Data=@LabTestPriceDetails @bind-Value=@Model.LabTestId
+                                    TextProperty="Name" ValueProperty="Id" Style="width: 100%;"/>
+                </div>
+                <div class="flex-col col-Padding text-align-end">
+                    @if (Model?.LabTestId != null)
+                    {
+                        <span class="between-text-primary" onclick="@(() => OnAdd(Model.LabTestId))"> <img class="text-with-button" src="_content/SharedComponent/images/add.png" alt=""/>Add</span>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</RadzenTemplateForm>
+@foreach (var (_, item) in AddedLabTestPriceDetails)
+{
+    <div class="bottom-line">
+        <div class="flex-table">
+            <div class="flex-table-col">
+                <div class="flex-col col-Padding">
+                    <span class="between-text-reset" onclick="@(() => OnRemove(item.Id))"> <img class="text-with-button" src="_content/SharedComponent/images/remove.png" alt=""/>Remove</span>
+                </div>
+                <div class="flex-col col-Padding">
+                    @item.Name
+                </div>
+                <div class="flex-col col-Padding">
+                    @item.Price
+                </div>
+
+            </div>
+      
+        </div>
+    </div>
+}
+<div class="bottom-line">
+    <div class="flex-table">
+        <div class="flex-table-col">
+            <div class="flex-col col-Padding">
+                Total: @TotalPrice
+            </div>
+            <div class="flex-col col-Padding text-align-end">
+                @if (AddedLabTestPriceDetails.Count > 0)
+                {
+                    <span class="between-text-primary" onclick="@OnSubmit"> <img class="text-with-button" src="_content/SharedComponent/images/save.png" alt=""/>Save</span>
+                }
+            </div>
+        </div>
+    </div>
+</div>

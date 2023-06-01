@@ -1,0 +1,5 @@
+E:\Startups\Latest\healthservice\src\Application\obj\Release\net6.0\Application.csproj.AssemblyReference.cache
+E:\Startups\Latest\healthservice\src\Application\obj\Release\net6.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+E:\Startups\Latest\healthservice\src\Application\obj\Release\net6.0\Application.AssemblyInfoInputs.cache
+E:\Startups\Latest\healthservice\src\Application\obj\Release\net6.0\Application.AssemblyInfo.cs
+E:\Startups\Latest\healthservice\src\Application\obj\Release\net6.0\Application.csproj.CoreCompileInputs.cache

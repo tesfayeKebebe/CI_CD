@@ -1,0 +1,93 @@
+@page "/register-user"
+@using Health.Mobile.Server.Models.Security
+@inherits RegisterBase
+<div class="main-content">
+<div class="setting-item">
+    <RadzenTemplateForm TItem="RegisterUser" Data="Model" >
+        <div class="flex-row">
+            <div class="flex-col col-Padding">
+                <div class="label">Full Name</div>
+                <RadzenTextBox Name="fullName" @bind-Value="Model.FullName" Style="width: 100%;"></RadzenTextBox>
+                <div class="flex-row">
+                    <div class="flex-col col-Padding">
+                        <RadzenRequiredValidator Component="fullName" Text="Full name is required"></RadzenRequiredValidator>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex-row">
+            <div class="flex-col col-Padding">
+                <div class="label">Username</div>
+                <RadzenTextBox Name="username" @bind-Value="Model.Username" Style="width: 100%;"></RadzenTextBox>
+                <div class="flex-row">
+                    <div class="flex-col col-Padding">
+                        <RadzenRequiredValidator Component="username" Text="Username is required"></RadzenRequiredValidator>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex-row">
+            <div class="flex-col col-Padding">
+                <div class="label">Password</div>
+                <RadzenTextBox type="password" Name="password" @bind-Value="Model.Password" Style="width: 100%;"></RadzenTextBox>
+                <div class="flex-row">
+                    <div class="flex-col col-Padding">
+                        <RadzenRequiredValidator Component="password" Text="Password is required"></RadzenRequiredValidator>
+                    </div>
+                </div>
+                <div class="flex-row">
+                    <div class="flex-col col-Padding">
+                        <RadzenLengthValidator Component="password" Min="4" Text="Password is at least 4 character " ></RadzenLengthValidator>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @if (HasPermission)
+        {
+            <div class="flex-row">
+                <div class="flex-col col-Padding">
+                    <div class="label">Role</div>
+                    <RadzenDropDown Data="_roles"  Name="role" @bind-Value="Model.RoleName" AllowClear="true" AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
+                                    TextProperty="RoleDescription" ValueProperty="RoleName" Style="width: 100%;"/>
+                    <div class="flex-row">
+                        <div class="flex-col col-Padding">
+                            <RadzenRequiredValidator Component="role" Text="Role is required"></RadzenRequiredValidator>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="flex-row">
+            <div class="flex-col col-Padding">
+                <div class="label">Phone Number</div>
+                <RadzenTextBox type="text" Name="phoneNumber" @bind-Value="Model.PhoneNumber" Style="width: 100%;"></RadzenTextBox>
+                <div class="flex-row">
+                    <div class="flex-col col-Padding">
+                        <RadzenRequiredValidator Component="phoneNumber" Text="Phone number is required"></RadzenRequiredValidator>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex-row">
+            <div class="flex-col col-Padding">
+                <div class="label">Email</div>
+                <RadzenTextBox type="email" Name="email" @bind-Value="Model.Email" Style="width: 100%;"></RadzenTextBox>
+                <div class="flex-row">
+                    <div class="flex-col col-Padding">
+                        <RadzenEmailValidator Component="email" Text="Email format is wrong"></RadzenEmailValidator>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+            <div class="flex-row">
+                <div class="flex-col col-Padding text-align-end">
+                    <span class="between-text-primary" onclick="@(()=>OnSubmit())"> <img class="text-with-button" src="images/save.png" alt=""/>Submit</span>
+                </div>
+                
+            </div>
+        
+    </RadzenTemplateForm>
+</div>
+</div>

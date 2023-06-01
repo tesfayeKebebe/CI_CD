@@ -1,0 +1,87 @@
+@using System.Globalization
+@attribute [Authorize]
+@page "/on-progress-lab-test"
+@inherits OnProgressLabTestBase
+<div class=" top">
+
+<div class="content-item" style="padding-bottom: 10px" >
+    <div class="search-box" >
+        <div class="input-group">
+            <RadzenTextBox
+                class="form-control"
+                Name="ShopSearch"
+                @bind-Value="Search"
+                @oninput="@OnInputChanged" Style="width: 80%"
+                Change="s => { ClearEnabled = !string.IsNullOrEmpty(s); }"
+                Placeholder="Search Patient name, assign name, sample number"/>
+            <RadzenButton Style="max-width: 15px;background: #d3d3d3 !important;"
+                          ButtonStyle="ButtonStyle.Light"
+                          Icon="close"
+                          Disabled="@(!ClearEnabled)"
+                          Click="@Clear"/>
+
+        </div>
+    </div>
+    </div>
+    @if (IsSpinner)
+    {
+        <div class="spinner"> </div>
+    }
+ 
+          <Virtualize Items="SelectedTestDetails" Context="item" OverscanCount="20">
+        <div class="content-item">
+            <div class="flex-table">
+                <div class="flex-col col-Padding">
+                    @item.PatientName
+                </div>
+                <div class="flex-col col-Padding">
+                    @item.AssignedUser
+                </div>
+                <div class="flex-col col-Padding">
+                    @if (item.IsSampleTaken)
+                    {
+                        <span>Recieved</span>
+                    }
+                    else
+                    {
+                        <span>Not Recieved</span>
+                    }
+                </div>
+                <div class="flex-col col-Padding">
+                    Price: @item.Amount.ToString("#,00", CultureInfo.CurrentCulture.NumberFormat)
+                    <span style="padding-right: 5px; padding-left: 5px">
+                        @item.Date.ToString("MMM")[..3]
+                        @item.Date.ToString("dd/yyyy:hh:mm")
+                    </span>
+                </div>
+                <div class="flex-table-col">
+
+                    <div class="flex-col  col-Padding ">
+                        <span class="between-text-button" onclick="@(() => OnDetail(item))"> <img class="text-with-button" src="_content/SharedComponent/images/show.png" alt=""/></span>
+                        @if (!item.IsSampleTaken)
+                        {
+                            <span class="between-text-button" onclick="@(() => OnMapVisit(item))"> <img class="text-with-button" src="_content/SharedComponent/images/location.png" alt=""/></span>
+                        }
+                        @if (item is {IsCompleted: false,IsSampleTaken: true})
+                        {
+                            <span class="between-text-button" onclick="@(() => OnDone(item))" style="margin-left:5px"> <img class="text-with-button" src="_content/SharedComponent/images/add.png" alt=""/></span>
+                        }
+                        <AuthorizeView Roles="administrator, supervisor">
+                            @if (item is {IsCompleted: true})
+                            {
+                                <span class="between-text-button" onclick="@(() => OnApprove(item))" style="margin-left:5px"> <img class="text-with-button" src="_content/SharedComponent/images/approve.png" alt=""/></span>
+                            }
+                        </AuthorizeView>
+                        <AuthorizeView Roles="administrator, supervisor ">
+                            @if (item is {IsSampleTaken: true})
+                            {
+                                <span class="between-text-button" onclick="@(() => OnAssign(item))"> <img class="text-with-button" src="_content/SharedComponent/images/user.png" alt=""/></span>
+                            }
+                        </AuthorizeView>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </Virtualize>  
+
+</div>

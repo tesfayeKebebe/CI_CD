@@ -1,0 +1,38 @@
+@using Microsoft.AspNetCore.Components
+@using RazorShared.Server.Models.Categories
+@inherits EditCategoryBase
+<RadzenTemplateForm TItem="CategoryDetail" Data="Model" Submit="@OnSave">
+    <div class="flex-row">
+        <div class="flex-col col-Padding">
+            <div class="label">Name</div>
+            <RadzenTextBox Name="name" @bind-Value="Model.Name" Style="width: 100%;"></RadzenTextBox>
+            <div class="flex-row">
+                <div class="flex-col col-Padding">
+                    <RadzenRequiredValidator Component="name" Text="Name is required"></RadzenRequiredValidator>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+        <div class="flex-row ">
+        <div class="flex-col col-Padding">
+            <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Lab</RadzenText>
+            <RadzenDropDown AllowClear="true" AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Data=@Labs @bind-Value=@Model.LabId
+                            TextProperty="Name" ValueProperty="Id" Style="width: 100%;" />
+        </div>
+        </div>
+    <div class="flex-row m-bottom">
+        <div class="flex-col col-Padding">
+            Is Active  <RadzenCheckBox TValue="bool" @bind-Value="Model.IsActive" style="padding-left: 10px"></RadzenCheckBox>
+        </div>
+    </div>
+    <div class="flex-row">
+        <div class="flex-col col-Padding">
+            <span class="between-text-reset" onclick="@OnReset"> <img class="text-with-button" src="_content/RazorShared/images/reset.png" alt=""/>Reset</span>
+        </div>
+        <div class="flex-col col-Padding text-align-end">
+            <span class="between-text-primary" onclick="@OnSave"> <img class="text-with-button" src="_content/RazorShared/images/save.png" alt=""/>Submit</span>
+        </div>
+    </div>
+
+</RadzenTemplateForm>

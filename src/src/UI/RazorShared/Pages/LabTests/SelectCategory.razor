@@ -1,0 +1,21 @@
+@using RazorShared.Pages.LabTests;
+@inherits SelectCategoryBase
+<div class="@(ViewModels.Count == 1 ? "test-grid-col-one" : "test-grid")">
+    @foreach (var (_, item)  in ViewModels)
+    {
+        <div class="test-card ">
+            <div class="test-name">
+                @item.Name
+            </div>
+
+            <div class="test-button">
+                <div>
+                    Price: @item.Price
+                </div>
+                <div>
+                 <span class="between-text-button" onclick="@(() => Remove(item))"> <img class="text-with-button" src="_content/RazorShared/images/remove.png" alt=""/>Delete</span>
+                </div>
+            </div>
+        </div>
+    }
+</div>

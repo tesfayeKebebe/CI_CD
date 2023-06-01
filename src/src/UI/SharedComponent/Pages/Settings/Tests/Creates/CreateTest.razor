@@ -1,0 +1,63 @@
+@using SharedComponent.Pages.Settings.Tests.Creates;
+@using SharedComponent.Server.Models.Categories
+@using SharedComponent.Server.Models.LabTests
+@using SharedComponent.Server.Models.Sample_Type
+@inherits CreateTestBase
+<RadzenTemplateForm TItem="LabTest" Data="Model" Submit="@OnSave">
+    @if (IsSpinner)
+    {
+        <div class="spinner"> </div>
+    }
+    <div class="flex-row">
+        <div class="flex-col col-Padding">
+            <div class="label">Name</div>
+            <RadzenTextBox Name="name" @bind-Value="Model.Name" Style="width: 100%;"></RadzenTextBox>
+            <div class="flex-row">
+                <div class="flex-col col-Padding">
+                    <RadzenRequiredValidator Component="name" Text="Name is required"></RadzenRequiredValidator>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="flex-row ">
+            <div class="flex-col col-Padding">
+                <div class="label">Category</div>
+                <RadzenDropDown  Style="width: 100%;"  AllowClear="true" AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Data=@CategoryDetails @bind-Value=@Model.CategoryId
+                                TextProperty="Name"  ValueProperty="Id" />
+            </div>
+        </div>
+    <div class="flex-row ">
+        <div class="flex-col col-Padding">
+            <div class="label">Sample Type</div>
+            <RadzenDropDown Multiple="true" Style="width: 100%;" Chips="true"  AllowClear="true" AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Data=@SampleTypeDetails @bind-Value=@Model.SampleTypeId
+                            TextProperty="Name"  ValueProperty="Id" />
+        </div>
+    </div>
+    <div class="flex-row ">
+        <div class="flex-col col-Padding">
+            <div class="label">Tube Type</div>
+            <RadzenDropDown Multiple="true" Style="width: 100%;" Chips="true" MaxSelectedLabels="100" AllowClear="true" AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" Data=@TubeDetails @bind-Value=@Model.TubeTypeId
+                            TextProperty="Name" ValueProperty="Id" />
+        </div>
+    </div>
+    <div class="flex-row m-bottom">
+        <div class="flex-col col-Padding">
+            <div class="label">Description</div>
+            <RadzenTextArea @bind-Value="Model.Description"  Rows="8" TValue="string" Style="width: 100%; height: 100%"></RadzenTextArea>
+        </div>
+    </div>
+    <div class="flex-row m-bottom">
+        <div class="flex-col col-Padding">
+            Is Fasting Required  <RadzenCheckBox TValue="bool" @bind-Value="Model.IsFastingRequired" style="padding-left: 10px"></RadzenCheckBox>
+        </div>
+    </div>
+    <div class="flex-row">
+        <div class="flex-col col-Padding">
+            <span class="between-text-reset" onclick="@OnReset"> <img class="text-with-button" src="_content/SharedComponent/images/reset.png" alt=""/>Reset</span>
+        </div>
+        <div class="flex-col col-Padding text-align-end">
+            <span class="between-text-primary" ><button type="submit"><img class="text-with-button" src="_content/SharedComponent/images/save.png" alt=""/>Submit</button> </span>
+        </div>
+    </div>
+
+</RadzenTemplateForm>

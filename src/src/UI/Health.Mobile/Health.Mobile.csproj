@@ -1,0 +1,128 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+    <PropertyGroup>
+        <TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
+        <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
+        <!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+        <!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
+        <OutputType>Exe</OutputType>
+        <RootNamespace>Health.Mobile</RootNamespace>
+        <UseMaui>true</UseMaui>
+        <SingleProject>true</SingleProject>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <EnableDefaultCssItems>false</EnableDefaultCssItems>
+	    <Nullable>enable</Nullable>
+
+        <!-- Display name -->
+        <ApplicationTitle>Health.Mobile</ApplicationTitle>
+
+        <!-- App Identifier -->
+        <ApplicationId>com.companyname.health.mobile</ApplicationId>
+        <ApplicationIdGuid>2D6CED75-FFE9-4B46-ACE7-25B95C0821AF</ApplicationIdGuid>
+
+        <!-- Versions -->
+        <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+        <ApplicationVersion>1</ApplicationVersion>
+
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">24.0</SupportedOSPlatformVersion>
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+        <TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!-- App Icon -->
+        <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\health.png" Color="#512BD4" />
+
+        <!-- Splash Screen -->
+        <MauiSplashScreen Include="Resources\Splash\health.png" Color="#512BD4" BaseSize="128,128" />
+
+        <!-- Images -->
+        <MauiImage Include="Resources\Images\*" />
+        <MauiImage Update="Resources\Images\health.png" BaseSize="168,208" />
+
+        <!-- Custom Fonts -->
+        <MauiFont Include="Resources\Fonts\*" />
+
+        <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+        <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AndroidResource Remove="wwwroot\Videos\**" />
+      <Compile Remove="wwwroot\Videos\**" />
+      <Content Remove="wwwroot\Videos\**" />
+      <EmbeddedResource Remove="wwwroot\Videos\**" />
+      <None Remove="wwwroot\Videos\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <MauiImage Remove="Resources\Images\health.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+	  <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.0" PrivateAssets="all" />
+       <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+	  <PackageReference Include="Blazored.LocalStorage.TestExtensions" Version="4.2.0" />
+	  <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="7.0.0" />
+	  <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="7.0.1" />
+	  <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
+	  <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+	  <PackageReference Include="Radzen.Blazor" Version="4.3.3" />
+	  <PackageReference Include="Toolbelt.Blazor.HttpClientInterceptor" Version="10.2.0" />
+    </ItemGroup>
+  <ItemGroup>
+	<None Remove="Platforms\Android\Resources\xml\network_security_config.xml" />
+	<None Remove="Resources\AppIcon\health.png" />
+	<None Remove="Resources\Images\health.png" />
+	<None Remove="Resources\Splash\health.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\AppIcon\health.png">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Resources\Images\health.png">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Resources\Splash\health.png">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pages\Home.razor" />
+    <None Include="Pages\Index.razor" />
+    <None Include="Pages\LabTests\Index.razor" />
+    <None Include="Pages\LabTests\LabTestDetailInformation.razor" />
+    <None Include="Pages\LabTests\MapRoute.razor" />
+    <None Include="Pages\LabTests\OnProgressLabTest.razor" />
+    <None Include="Pages\LabTests\SelectCategory.razor" />
+    <None Include="Pages\LabTests\SelectedLabTest.razor" />
+    <None Include="Pages\LabTests\SelectedLabTestDetail.razor" />
+    <None Include="Pages\LabTests\TemporaryFileUploads\AddingPatient.razor" />
+    <None Include="Pages\LabTests\TemporaryFileUploads\PatientFileContainer.razor" />
+    <None Include="Pages\LabTests\TemporaryFileUploads\PatientFileDisplay.razor" />
+    <None Include="Pages\LabTests\TemporaryFileUploads\PatientFileUpload.razor" />
+    <None Include="Pages\LabTests\TestList.razor" />
+    <None Include="Pages\LabTests\TestResult.razor" />
+    <None Include="Pages\PaymentOptions\PaymentOptions.razor" />
+    <None Include="Pages\Securities\Account.razor" />
+    <None Include="Pages\Securities\AccountTab.razor" />
+    <None Include="Pages\Securities\ChangePassword.razor" />
+    <None Include="Pages\Securities\Login.razor" />
+    <None Include="Pages\Securities\Register.razor" />
+    <None Include="wwwroot\dist\leaflet-routing-machine.js" />
+    <None Include="wwwroot\dist\leaflet-routing-machine.min.js" />
+    <None Include="wwwroot\dist\leaflet.js" />
+    <None Include="wwwroot\dist\leaflet.js.map" />
+    <None Include="wwwroot\dist\leaflet.routing.icons.svg" />
+    <None Include="wwwroot\images\arrow-right.svg" />
+    <None Include="wwwroot\images\labtest.svg" />
+    <None Include="wwwroot\js\Script.js" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,74 @@
+@attribute [Authorize]
+@page "/Test-price-list"
+@inherits TestPriceListBase
+<SettingTab></SettingTab>
+<div class="main-content top-setting">
+    <div class="setting-item">
+            <div class="flex-col" style="padding-bottom: 10px">
+                <div class="input-group">
+                    <RadzenTextBox
+                        class="form-control"
+                        Name="ShopSearch"
+                        @bind-Value="Search"
+                        @oninput="@OnInputChanged"
+                        Change="s => { ClearEnabled = !string.IsNullOrEmpty(s); }"
+                        Placeholder="Search Option"  Style="width: 80%"/>
+                    <RadzenButton Style="max-width: 15px;background: #d3d3d3 !important;"
+                        ButtonStyle="ButtonStyle.Light"
+                        Icon="close"
+                        Disabled="@(!ClearEnabled)"
+                        Click="@Clear"/>
+
+                </div>
+                <div class="text-align-end buttons-add-top" >
+                <img onclick="@(() => @OnAdd())" class="button-image" src="_content/SharedComponent/images/add.png" alt="" />
+                </div>
+            </div>
+        @if (IsSpinner)
+        {
+            <div class="spinner"> </div>
+        }
+        @if (TestPriceDetails != null)
+        {
+            <Virtualize Items="TestPriceDetails" Context="cat" OverscanCount="20">
+                <div class="bottom-line">
+                    <div class="flex-table">
+                        <div class="flex-col col-Padding">
+                            @cat.LabTest
+                        </div>
+                        <div class="flex-table-col">
+
+                            <div class="flex-col col-Padding" style="padding-left: 20px">
+                                @cat.Price
+                            </div>
+                            @if (cat.IsActive)
+                            {
+                                <div class="flex-col col-Padding" style="padding-left: 20px; color: green">
+                                    Active
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="flex-col col-Padding" style="padding-left: 20px">
+                                    InActive
+                                </div>
+                            }
+
+
+                        </div>
+                        <div class="flex-table-col">
+                            <div  class="flex-col  col-Padding ">
+                                <img onclick="@(() =>  OnEdit(cat))" class="button-image" src="_content/SharedComponent/images/edit.png" alt="" />
+                            </div>
+                            <AuthorizeView Roles="administrator">
+                                <div class="flex-col  col-Padding ">
+                                    <img onclick="@(() => OnDelete(cat.Id!))" class="button-image" src="_content/SharedComponent/images/delete.png" alt="" />
+                                </div>
+                            </AuthorizeView>
+                        </div>
+                    </div>
+                </div>                
+            </Virtualize>
+        }
+    </div>
+</div>

@@ -1,0 +1,42 @@
+@using System.Globalization
+@using RazorShared.Pages.LabTests;
+@page "/completed-lab-test"
+@inherits CompletedLabTestBase
+<div class="main-content top">
+    <div class="content-item ">
+        <PeriodSelector Period="@PeriodViewModel.Period" From="@PeriodViewModel.From" Until="@PeriodViewModel.Until"
+                        OnPeriodSelected="@OnPeriodSelectedAsync"/>            
+
+        <div class="flex-row" onclick="@OnFilter">
+            <div  class="flex-col  col-Padding  text-align-end">
+                <img class="button-image" src="_content/RazorShared/images/search.png" alt=""/>
+            </div>
+            
+        </div>
+    </div>
+    <Virtualize Items="SelectedTestDetails" Context="item" OverscanCount="20">
+         <div class="content-item">
+                    <div class="flex-table">
+                        <div class="flex-col col-Padding">
+                            @item.PatientName
+                        </div>
+                        <div class="flex-col col-Padding">
+                            @item.DoneBy
+                        </div>
+                        <div class="flex-col col-Padding">
+                            Price: @item.Amount.ToString("#,00", CultureInfo.CurrentCulture.NumberFormat)
+                        </div>
+                        <div class="flex-table-col">
+                            <div class="flex-col col-Padding">
+                                @item.Date.ToString("MMM")[..3]
+                                @item.Date.ToString("dd/yyyy:hh:mm")
+                            </div>
+                            <div class="flex-col  col-Padding ">
+                                <span class="between-text-button" onclick="@(() => OnDone(item))"> <img class="text-with-button" src="_content/RazorShared/images/show.png" alt=""/>Show</span>
+                            </div>
+        
+                        </div>
+                    </div>
+                </div>
+    </Virtualize>
+</div>

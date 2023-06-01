@@ -1,0 +1,41 @@
+﻿@attribute [Authorize]
+@page "/lab-list"
+@inherits LabListBase
+<SettingTab></SettingTab>
+<div class="main-content top-setting">
+    <div class="setting-item">
+    <div class="flex-row">
+        <div  class="flex-col  col-Padding text-align-end">
+            <span onclick="@(()=>OnAdd())"> <img class="button-image" src="_content/SharedComponent/images/add.png" alt="" /></span>
+        </div>
+    </div>
+        @if (IsSpinner)
+        {
+            <div class="spinner"> </div>
+        }
+    @if(Labs !=null)
+    {
+        <Virtualize Items="Labs" Context="lab" OverscanCount="20">
+          <div class="bottom-line">
+              <div class="flex-table">
+                  <div class="flex-col col-Padding">
+                      @lab.Name
+                  </div>
+                  <div class="flex-table-col">
+                      <div  class="flex-col  col-Padding ">
+                                <span onclick="@(() => OnEdit(lab))">
+                                    <img class="button-image" src="_content/SharedComponent/images/edit.png" alt="" />
+                                </span>
+                      </div>
+                      <AuthorizeView Roles="administrator">
+                          <div  class="flex-col  col-Padding ">
+                                   <img onclick="@(() => OnDelete(lab.Id))" class="button-image" src="_content/SharedComponent/images/delete.png" alt="" /> 
+                                </div>
+                      </AuthorizeView>
+                  </div>           
+              </div>
+              </div>            
+        </Virtualize>
+    }
+    </div>
+    </div>

@@ -1,0 +1,33 @@
+@page "/tube-type"
+@inherits TubeTypesBase
+<SettingTab></SettingTab>
+<div class="main-content top-setting">
+<div class="setting-item">
+    <div class="flex-row">
+        <div onclick="@OnAdd" class="flex-col  col-Padding text-align-end">
+            <img class="button-image" src="image/add.png" alt=""/>
+        </div>
+    </div>
+    @if(TubeDetails !=null)
+    {
+        foreach (var tubeType in TubeDetails)
+        {
+            <div class="bottom-line">
+                <div class="flex-table">
+                    <div class="flex-col col-Padding">
+                        @tubeType.Name
+                    </div>
+                    <div class="flex-table-col">
+                        <div onclick="@(() => OnEdit(tubeType))" class="flex-col  col-Padding ">
+                            <img class="button-image" src="image/edit.png" alt=""/>
+                        </div>
+                        <div onclick="@(() => OnDelete(tubeType.Id))" class="flex-col  col-Padding ">
+                            <img class="button-image" src="image/delete.png" alt=""/>
+                        </div>
+                    </div>        
+                </div>
+                </div>
+        }
+    }
+    </div>
+</div>

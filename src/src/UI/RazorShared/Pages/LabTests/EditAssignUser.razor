@@ -1,0 +1,21 @@
+@inherits EditAssignUserBase
+<div class="flex-row">
+    <div class="flex-col col-Padding">
+        <div class="label">User</div>
+        <RadzenDropDown Data="UserAssignDetails"  Name="userId" @bind-Value="Model.AssignedUser" AllowClear="true" AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
+                        TextProperty="FullName" ValueProperty="UserId" Style="width: 100%;"/>
+        <div class="flex-row">
+            <div class="flex-col col-Padding">
+                <RadzenRequiredValidator Component="userId" Text="User is required"></RadzenRequiredValidator>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="flex-row">
+<div class="flex-col col-Padding">
+    <span class="between-text-reset" onclick="@OnReset"> <img class="text-with-button" src="_content/RazorShared/images/reset.png" alt=""/>Reset</span>
+</div>
+<div class="flex-col col-Padding text-align-end">
+    <span class="between-text-primary" onclick="@OnSave"> <img class="text-with-button" src="_content/RazorShared/images/save.png" alt=""/>Submit</span>
+</div>
+</div>

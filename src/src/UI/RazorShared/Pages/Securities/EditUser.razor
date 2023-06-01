@@ -1,0 +1,64 @@
+@using RazorShared.Server.Models.Security
+@inherits EditUserBase
+<div class="main-content">
+<div class="setting-item">
+    <RadzenTemplateForm TItem="UserDto" Data="Model" >
+        <div class="flex-row">
+            <div class="flex-col col-Padding">
+                <div class="label">Full Name</div>
+                <RadzenTextBox Name="fullName" @bind-Value="Model!.FullName" Style="width: 100%;"></RadzenTextBox>
+                <div class="flex-row">
+                    <div class="flex-col col-Padding">
+                        <RadzenRequiredValidator Component="fullName" Text="Full name is required"></RadzenRequiredValidator>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex-row">
+            <div class="flex-col col-Padding">
+                <div class="label">Username</div>
+                <RadzenTextBox Name="username" @bind-Value="Model!.UserName" Style="width: 100%;" Disabled="true"></RadzenTextBox>
+                <div class="flex-row">
+                    <div class="flex-col col-Padding">
+                        <RadzenRequiredValidator Component="username" Text="Username is required"></RadzenRequiredValidator>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex-row">
+            <div class="flex-col col-Padding">
+                <div class="label">Phone Number</div>
+                <RadzenTextBox type="text" Name="phoneNumber" @bind-Value="Model!.PhoneNumber" Style="width: 100%;"></RadzenTextBox>
+                <div class="flex-row">
+                    <div class="flex-col col-Padding">
+                        <RadzenRequiredValidator Component="phoneNumber" Text="Phone number is required"></RadzenRequiredValidator>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="flex-row">
+                    <div class="flex-col col-Padding">
+                        <div class="label">Email</div>
+                        <RadzenTextBox type="email" Name="email" @bind-Value="Model.Email" Style="width: 100%;"></RadzenTextBox>
+                        <div class="flex-row">
+                            <div class="flex-col col-Padding">
+                                <RadzenEmailValidator Component="email" Text="Email format is wrong"></RadzenEmailValidator>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        <div class="flex-row m-bottom">
+            <div class="flex-col col-Padding">
+                Is Active  <RadzenCheckBox  TValue="bool" @bind-Value="Model.IsEnabled"  style="padding-left: 10px"></RadzenCheckBox>
+            </div>
+        </div>
+        <div class="flex-row">
+        <div class="flex-col col-Padding text-align-end">
+            <span class="between-text-primary" onclick="@OnSubmit"> <img class="text-with-button" src="_content/RazorShared/images/save.png" alt=""/>Submit</span>
+        </div>
+        
+    </div>
+        
+    </RadzenTemplateForm>
+</div>
+</div>

@@ -1,0 +1,41 @@
+﻿@using Web.UI.Server.Models.Security
+@inherits LoginBase
+    <RadzenTemplateForm TItem="LoginModel" Data="model" Submit="@OnLogin">
+        <div class="flex-row">
+            <div class="flex-col col-Padding">
+                <div class="label">Username</div>
+                <RadzenTextBox Name="username" @bind-Value="model.Username" Style="width: 100%;"></RadzenTextBox>
+            <div class="flex-row">
+                <div class="flex-col col-Padding">
+                <RadzenRequiredValidator Component="username" Text="Username is required" ></RadzenRequiredValidator>
+             </div>
+            </div>
+            </div>
+        </div>
+    <div class="flex-row m-bottom">
+            <div class="flex-col col-Padding">
+                <div class="label">Password</div>
+                <RadzenTextBox type="password" Name="password" @bind-Value="model.Password" Style="width: 100%;"></RadzenTextBox>
+            <div class="flex-row">
+                <div class="flex-col col-Padding">
+                    <RadzenRequiredValidator Component="password" Text="Password is required"></RadzenRequiredValidator>
+                </div>
+                </div>
+                <div class="flex-row">
+                <div class="flex-col col-Padding">
+                <RadzenLengthValidator Component="password" Min="4" Text="Password is at least 4 character "></RadzenLengthValidator>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="flex-row">
+            <div class="flex-col">
+                <RadzenButton ButtonType="ButtonType.Submit" Text="Login" ButtonStyle="ButtonStyle.Success"></RadzenButton>
+            </div>
+        </div>
+        <div class="flex-row">
+            <div class="flex-col col-Padding">
+            Don't have account? <span onclick="@OnRegister" style="color: #023a75;">Register</span> 
+        </div>
+        </div>
+    </RadzenTemplateForm>

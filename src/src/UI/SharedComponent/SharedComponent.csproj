@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+  <ItemGroup>
+	<PackageReference Include="Blazored.LocalStorage.TestExtensions" Version="4.2.0" />
+	<PackageReference Include="BrowserInterop" Version="1.1.2" />
+	<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="7.0.0" />
+	<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="7.0.1" />
+	<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
+	<PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+	<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+	<PackageReference Include="Radzen.Blazor" Version="4.6.2" />
+	<PackageReference Include="Toolbelt.Blazor.HttpClientInterceptor" Version="10.2.0" />
+	<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.0" />
+     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.0" PrivateAssets="all" />
+  </ItemGroup>
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\dist\leaflet-routing-machine.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\dist\leaflet-routing-machine.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\dist\leaflet-routing-machine.min.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\dist\leaflet.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\dist\leaflet.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\dist\leaflet.js.map" />
+    <_ContentIncludedByDefault Remove="wwwroot\dist\leaflet.routing.icons.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\dist\leaflet.routing.icons.svg" />
+    <_ContentIncludedByDefault Remove="wwwroot\dist\routing-icon.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\fileScript.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\MapRoute.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\bootstrap\bootstrap.min.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\bootstrap\bootstrap.min.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\css\open-iconic\FONT-LICENSE" />
+    <None Include="wwwroot\css\open-iconic\font\fonts\open-iconic.svg" />
+    <None Include="wwwroot\css\open-iconic\ICON-LICENSE" />
+    <None Include="wwwroot\css\open-iconic\README.md" />
+  </ItemGroup>
+    
+</Project>

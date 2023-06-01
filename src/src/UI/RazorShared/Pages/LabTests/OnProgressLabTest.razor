@@ -1,0 +1,70 @@
+@using System.Globalization
+@using RazorShared.Pages.LabTests;
+@page "/on-progress-lab-test"
+@inherits OnProgressLabTestBase
+<div class=" top">
+    <div class="search-box"  style="margin-bottom: 10px">
+        <div class="input-group">
+            <RadzenTextBox
+                class="form-control"
+                Name="ShopSearch"
+                @bind-Value="Search"
+                @oninput="@OnInputChanged"
+                Change="s => { ClearEnabled = !string.IsNullOrEmpty(s); }"
+                Placeholder="Search Patient name, assign name, sample number"/>
+            <RadzenButton
+                ButtonStyle="ButtonStyle.Light"
+                Icon="close"
+                Disabled="@(!ClearEnabled)"
+                Click="@Clear"/>
+            
+        </div>
+    </div>
+    
+    <Virtualize Items="SelectedTestDetails" Context="item" OverscanCount="20">
+        <div class="content-item">
+            <div class="flex-table">
+                <div class="flex-col col-Padding">
+                    @item.PatientName
+                </div>
+                <div class="flex-col col-Padding">
+                    @item.AssignedUser
+                </div>
+                <div class="flex-col col-Padding">
+                    @if (item.IsSampleTaken)
+                    {
+                        <span>Recieved</span>
+                    }
+                    else
+                    {
+                        <span>Not Recieved</span>
+                    }
+                </div>
+                <div class="flex-col col-Padding">
+                    Price: @item.Amount.ToString("#,00", CultureInfo.CurrentCulture.NumberFormat)
+                    <span style="padding-right: 5px; padding-left: 5px">
+                        @item.Date.ToString("MMM")[..3]
+                        @item.Date.ToString("dd/yyyy:hh:mm")
+                    </span>
+                </div>
+                <div class="flex-table-col">
+
+                    <div class="flex-col  col-Padding ">
+                        <span class="between-text-button" onclick="@(() => OnDetail(item))"> <img class="text-with-button" src="_content/RazorShared/images/show.png" alt=""/></span>
+                        <span class="between-text-button" onclick="@(() => OnMapVisit(item))"> <img class="text-with-button" src="_content/RazorShared/images/location.png" alt=""/></span>
+                        @if (item is {IsCompleted: false,IsSampleTaken: true})
+                        {
+                            <span class="between-text-button" onclick="@(() => OnDone(item))" style="margin-left:5px"> <img class="text-with-button" src="_content/RazorShared/images/add.png" alt=""/></span>
+                        }
+                        <AuthorizeView Roles="administrator, supervisor">
+                            <span class="between-text-button" onclick="@(() => OnApprove(item))" style="margin-left:5px"> <img class="text-with-button" src="_content/RazorShared/images/approve.png" alt=""/></span>
+                        </AuthorizeView>
+                        <AuthorizeView Roles="administrator, supervisor ">
+                            <span class="between-text-button" onclick="@(() => OnAssign(item))"> <img class="text-with-button" src="_content/RazorShared/images/user.png" alt=""/></span>
+                        </AuthorizeView>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </Virtualize>
+</div>

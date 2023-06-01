@@ -1,0 +1,100 @@
+
+@using Microsoft.AspNetCore.Components
+@inherits TestResultBase
+@if (IsSpinner)
+{
+    <div class="spinner"> </div>
+}
+<div class="flex-row ">
+        <div class="flex-col col-Padding" style="margin-bottom:40px">
+            <div class="label">Patient Name: @Model.PatientName</div>
+        </div>
+    </div>
+        <div class="flex-row m-bottom">
+            <RadzenTextArea Rows="10" Disabled="HasPermission" Name="description" TValue="string" @bind-Value="Model!.Description" Style="width: 100%; height: 100%" Placeholder="Type your result"></RadzenTextArea>
+        </div>
+
+    <div class="flex-row m-bottom">
+        <div class="flex-col col-Padding">
+            <RadzenRequiredValidator Component="description" Text="Description is required"></RadzenRequiredValidator>
+        </div>
+    </div>
+    
+@*@if (!HasPermission)
+{*@
+            <div class="flex-row  m-bottom">
+                <div class="flex-col col-Padding">
+            <InputFile OnChange="HandleFileSelected" accept=".pdf" disabled="@isDisabled">@inputeMessage</InputFile>
+                </div>
+        @if (Model.StoredFileName != null || Files?.StoredFileName != null && !Model.IsCompleted)
+        {
+                    <div class="flex-col col-Padding text-align-end" onclick="@DeleteUploadedFile">
+                        <span class="between-text-primary"> <img class="text-with-button" src="_content/SharedComponent/images/delete.png" alt=""/>Remove</span>
+                    </div>
+                }
+            </div>
+     @*   }*@
+        <div class="flex-row  m-bottom">
+            <div class="flex-col col-Padding">
+                @if (PdfUrl!="" )
+                {
+                    <embed src="@PdfUrl" type="application/pdf" width="100%" height="800px"/>
+                }
+            </div>
+        </div>
+           <AuthorizeView Roles="administrator, supervisor">
+                <div class="flex-row m-bottom">
+                    <div class="flex-col col-Padding">
+                        <div class="label">Reason</div>
+                        <RadzenTextArea Rows="10" @bind-Value="Model.Reason" Style="width: 100%; height: 100%" Placeholder=""></RadzenTextArea>
+                    </div>
+                </div>
+                <div class="flex-row m-bottom">
+                    <div class="flex-col col-Padding">
+                        Is Completed <RadzenCheckBox  TValue="bool" @bind-Value="Model.IsCompleted" style="padding-left: 10px"></RadzenCheckBox>
+                    </div>
+                    @if (Model.IsCompleted)
+                    {
+                        <div onclick="@OnFinish" class="flex-col  col-Padding text-align-end">
+                            <span class="between-text-primary"> <img class="text-with-button" src="_content/SharedComponent/images/save.png" alt=""/>Finish</span>
+                        </div>
+                    }
+
+                </div>
+            </AuthorizeView>
+     
+            @if (Model is {Reason: { },IsCompleted: false})
+            {
+                <div class="flex-row m-bottom">
+                    <div class="flex-col col-Padding">
+                        <div class="label">Reason</div>
+                        <RadzenTextArea Rows="10" @bind-Value="Model.Reason" Style="width: 100%; height: 100%" Disabled="true" Placeholder=""></RadzenTextArea>
+                    </div>
+                </div>
+            }
+        
+        <div class="flex-row " style="margin-top: 55px">
+            <div class="flex-col col-Padding">
+                @if (!Model.IsCompleted)
+                {
+                    <div onclick="@OnBack" class="flex-col  col-Padding ">
+                        <span class="between-text-reset"> <img class="text-with-button" src="_content/SharedComponent/images/back.png" alt=""/>Back</span>
+                    </div>
+                }
+            </div>
+            @if (!HasPermission && !Model.IsCompleted)
+            {
+                <div class="test-button">
+                    <div>
+                        <span class="between-text-primary" onclick="@OnSave"> <img class="text-with-button" src="_content/SharedComponent/images/save.png" alt=""/>Save</span>
+                    </div>
+                </div>
+            }
+            @if (Model is {Id: { },IsCompleted: false} && !HasPermission)
+            {
+                <div onclick="@OnFinish" class="flex-col  col-Padding text-align-end">
+                    <span class="between-text-primary"> <img class="text-with-button" src="_content/SharedComponent/images/save.png" alt=""/>Finish</span>
+                </div>
+            }
+
+        </div>

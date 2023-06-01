@@ -1,0 +1,77 @@
+{
+  "Files": [
+    {
+      "Id": "E:\\Startups\\Latest\\healthservice\\src\\Web.API\\wwwroot\\.DS_Store",
+      "PackagePath": "staticwebassets\\.DS_Store"
+    },
+    {
+      "Id": "E:\\Startups\\Latest\\healthservice\\src\\Web.API\\wwwroot\\Files\\Daily Life Phrases for Travel_ Speak English Wita9ce0e30-38e3-4140-8f8e-8741f6fe1a8d.pdf",
+      "PackagePath": "staticwebassets\\Files\\Daily Life Phrases for Travel_ Speak English Wita9ce0e30-38e3-4140-8f8e-8741f6fe1a8d.pdf"
+    },
+    {
+      "Id": "E:\\Startups\\Latest\\healthservice\\src\\Web.API\\wwwroot\\Files\\Tesfaye CV82eb6e8a-6368-4339-b046-c54ac925bef1.pdf",
+      "PackagePath": "staticwebassets\\Files\\Tesfaye CV82eb6e8a-6368-4339-b046-c54ac925bef1.pdf"
+    },
+    {
+      "Id": "E:\\Startups\\Latest\\healthservice\\src\\Web.API\\wwwroot\\Files\\maui tutorialbb6300e8-3f39-4221-bb25-2c709c79d026.pdf",
+      "PackagePath": "staticwebassets\\Files\\maui tutorialbb6300e8-3f39-4221-bb25-2c709c79d026.pdf"
+    },
+    {
+      "Id": "E:\\Startups\\Latest\\healthservice\\src\\Web.API\\wwwroot\\TemporaryPatientFiles\\20180923_1125473e66fe9d-8cef-432f-9edb-30bc540ac8f8.jpg",
+      "PackagePath": "staticwebassets\\TemporaryPatientFiles\\20180923_1125473e66fe9d-8cef-432f-9edb-30bc540ac8f8.jpg"
+    },
+    {
+      "Id": "E:\\Startups\\Latest\\healthservice\\src\\Web.API\\wwwroot\\TemporaryPatientFiles\\20180923_1125556c1856b7-c3f1-46fa-b40c-b0460e8a9c0a.jpg",
+      "PackagePath": "staticwebassets\\TemporaryPatientFiles\\20180923_1125556c1856b7-c3f1-46fa-b40c-b0460e8a9c0a.jpg"
+    },
+    {
+      "Id": "E:\\Startups\\Latest\\healthservice\\src\\Web.API\\wwwroot\\TemporaryPatientFiles\\20180923_112613e9a2d1c9-ed57-46db-8219-18a85def124d.jpg",
+      "PackagePath": "staticwebassets\\TemporaryPatientFiles\\20180923_112613e9a2d1c9-ed57-46db-8219-18a85def124d.jpg"
+    },
+    {
+      "Id": "E:\\Startups\\Latest\\healthservice\\src\\Web.API\\wwwroot\\TemporaryPatientFiles\\20180923_112619186d661b-d368-45bb-adf1-a66299b50d85.jpg",
+      "PackagePath": "staticwebassets\\TemporaryPatientFiles\\20180923_112619186d661b-d368-45bb-adf1-a66299b50d85.jpg"
+    },
+    {
+      "Id": "E:\\Startups\\Latest\\healthservice\\src\\Web.API\\wwwroot\\TemporaryPatientFiles\\Capture1d551ff31-c961-4639-98fa-ef13d68c4073.PNG",
+      "PackagePath": "staticwebassets\\TemporaryPatientFiles\\Capture1d551ff31-c961-4639-98fa-ef13d68c4073.PNG"
+    },
+    {
+      "Id": "E:\\Startups\\Latest\\healthservice\\src\\Web.API\\wwwroot\\TemporaryPatientFiles\\Capture33c790f73-e065-461c-9fef-e2c4a78c6e43.PNG",
+      "PackagePath": "staticwebassets\\TemporaryPatientFiles\\Capture33c790f73-e065-461c-9fef-e2c4a78c6e43.PNG"
+    },
+    {
+      "Id": "E:\\Startups\\Latest\\healthservice\\src\\Web.API\\wwwroot\\TemporaryPatientFiles\\Capture386893122-1861-432c-8d25-a91787c22aff.PNG",
+      "PackagePath": "staticwebassets\\TemporaryPatientFiles\\Capture386893122-1861-432c-8d25-a91787c22aff.PNG"
+    },
+    {
+      "Id": "E:\\Startups\\Latest\\healthservice\\src\\Web.API\\wwwroot\\TemporaryPatientFiles\\Capture3c0ec9219-dc1b-4d79-bea5-d965e28f5e44.PNG",
+      "PackagePath": "staticwebassets\\TemporaryPatientFiles\\Capture3c0ec9219-dc1b-4d79-bea5-d965e28f5e44.PNG"
+    },
+    {
+      "Id": "E:\\Startups\\Latest\\healthservice\\src\\Web.API\\wwwroot\\TemporaryPatientFiles\\Captured92b3c5d-9c65-40f6-aca4-0040583d34b1.PNG",
+      "PackagePath": "staticwebassets\\TemporaryPatientFiles\\Captured92b3c5d-9c65-40f6-aca4-0040583d34b1.PNG"
+    },
+    {
+      "Id": "E:\\Startups\\Latest\\healthservice\\src\\Web.API\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "obj\\Release\\net7.0\\staticwebassets\\msbuild.Web.API.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Release\\net7.0\\staticwebassets\\msbuild.build.Web.API.props",
+      "PackagePath": "build\\Web.API.props"
+    },
+    {
+      "Id": "obj\\Release\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.Web.API.props",
+      "PackagePath": "buildMultiTargeting\\Web.API.props"
+    },
+    {
+      "Id": "obj\\Release\\net7.0\\staticwebassets\\msbuild.buildTransitive.Web.API.props",
+      "PackagePath": "buildTransitive\\Web.API.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

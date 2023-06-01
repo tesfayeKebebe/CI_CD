@@ -1,0 +1,30 @@
+@using SharedComponent.Pages.Settings.Labs.Creates;
+@using SharedComponent.Server.Models.Labs
+@inherits CreateBase
+<RadzenTemplateForm TItem="Lab" Data="Model" Submit="@OnSave">
+    @if (IsSpinner)
+    {
+        <div class="spinner"> </div>
+    }
+    <div class="flex-row m-bottom">
+        <div class="flex-col col-Padding">
+            <div class="label">Name</div>
+            <RadzenTextBox Name="name" @bind-Value="Model.Name" Style="width: 100%;"></RadzenTextBox>
+            <div class="flex-row">
+                <div class="flex-col col-Padding">
+                    <RadzenRequiredValidator Component="name" Text="Name is required"></RadzenRequiredValidator>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex-row">
+        <div class="flex-col col-Padding">
+            <span class="between-text-reset" onclick="@OnReset"> <img class="text-with-button" src="_content/SharedComponent/images/reset.png" alt=""/>Reset</span>
+        </div>
+        <div class="flex-col col-Padding text-align-end">
+            <span class="between-text-primary" ><button type="submit"><img class="text-with-button" src="_content/SharedComponent/images/save.png" alt=""/>Submit</button> </span>
+        </div>
+    </div>
+
+</RadzenTemplateForm>

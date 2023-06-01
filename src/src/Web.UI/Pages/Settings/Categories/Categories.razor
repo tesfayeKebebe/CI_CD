@@ -1,0 +1,38 @@
+@page "/lab-categories"
+@inherits EditCategoryBase
+<SettingTab></SettingTab>
+<div class="main-content top-setting">
+    <div class="setting-item">
+        <div class="flex-row">
+            <div onclick="@OnAdd" class="flex-col  col-Padding text-align-end">
+                <img class="button-image" src="image/add.png" alt=""/>
+            </div>
+        </div>
+        @if (categoryDetails != null)
+        {
+            foreach (var cat in categoryDetails)
+            {
+                <div class="bottom-line">
+                    <div class="flex-table">
+                        <div class="flex-table-col">
+                            <div class="flex-col col-Padding">
+                                @cat.Name
+                            </div>
+                            <div class="flex-col col-Padding">
+                                @cat.Lab
+                            </div>
+                        </div>
+                        <div class="flex-table-col">
+                            <div onclick="@(() => OnEdit(cat))" class="flex-col  col-Padding ">
+                                <img class="button-image" src="image/edit.png" alt=""/>
+                            </div>
+                            <div onclick="@(() => OnDelete(cat.Id))" class="flex-col  col-Padding ">
+                                <img class="button-image" src="image/delete.png" alt=""/>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+            }
+        }
+    </div>
+</div>

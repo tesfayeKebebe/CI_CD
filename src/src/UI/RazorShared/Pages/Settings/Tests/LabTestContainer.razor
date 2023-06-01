@@ -1,0 +1,33 @@
+@page "/lab-test-list"
+@using RazorShared.Pages.Settings.Tests;
+@inherits LabTestContainerBase
+<div class="main-content top-setting">
+<div class="setting-item">
+    <div class="flex-row">
+        <div onclick="@OnAdd" class="flex-col  col-Padding text-align-end">
+            <img class="button-image" src="_content/RazorShared/images/add.png" alt=""/>
+        </div>
+    </div>
+    @if(LabTestDetails !=null)
+    {
+        var groups = LabTestDetails.GroupBy(x => x.CategoryId).ToList();
+        <Virtualize Items="groups" Context="group" OverscanCount="10">
+            <div class="bottom-line" >
+                           <div class="flex-row">
+                               <div class="flex-col col-Padding">
+                                   <div class="category">
+                                       @group.First().Category
+                                   </div>
+                                   
+                               </div>
+                               @* <div class="@(Expanded ? "arrow down" : "arrow up")"></div> *@
+                               
+                           </div>
+                       </div>
+                           @* @if (Expanded) *@
+                           @* { *@
+                       <LabTestList ChangesAsync="@ChangesAsync" LabTestDetails="group.ToList()"></LabTestList>    
+        </Virtualize>
+    }
+</div>
+</div>

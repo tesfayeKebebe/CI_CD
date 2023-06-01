@@ -1,0 +1,25 @@
+@using Web.UI.Server.Models.Labs
+@inherits CreateBase
+<RadzenTemplateForm TItem="Lab" Data="model" Submit="@OnSave">
+    <div class="flex-row m-bottom">
+        <div class="flex-col col-Padding">
+            <div class="label">Name</div>
+            <RadzenTextBox Name="name" @bind-Value="model.Name" Style="width: 100%;"></RadzenTextBox>
+            <div class="flex-row">
+                <div class="flex-col col-Padding">
+                    <RadzenRequiredValidator Component="name" Text="Name is required"></RadzenRequiredValidator>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex-row">
+                <div class="flex-col">
+                    <RadzenButton ButtonType="ButtonType.Reset" Text="Reset" ButtonStyle="ButtonStyle.Danger" Click="OnReset"></RadzenButton>
+                </div>
+        <div class="flex-col">
+            <RadzenButton ButtonType="ButtonType.Submit" Text="Submit" ButtonStyle="ButtonStyle.Success"></RadzenButton>
+        </div>
+    </div>
+
+</RadzenTemplateForm>
