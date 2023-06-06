@@ -20,10 +20,10 @@ jobs:
         dotnet-version: '7.0.x'
 
     - name: Restore dependencies
-      run: dotnet restore ./Dotnet-health/src/Health_Services.sln
+      run: dotnet restore ./src/Health_Services.sln
 
     - name: Build project
-      run: dotnet build ./Dotnet-health/src/Health_Services.sln --configuration Release --no-restore
+      run: dotnet build ./src/Health_Services.sln --configuration Release --no-restore
 
     - name: Publish project
-      run: dotnet publish ./Dotnet-health/src/Health_Services.sln --configuration Release --no-build
+      run: dotnet publish ./src/Health_Services.sln --configuration Release --no-build
