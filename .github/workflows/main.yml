@@ -1,0 +1,27 @@
+name: publish 
+
+on:
+workflow_dispatch:
+push:
+branches:
+- main
+jobs:
+publish:
+runs-on: ubuntu-latest
+
+steps:
+- useses: actions/checkout@v3
+
+- name: setup .NET
+uses: actions/setup-dotnet@v3
+with: 
+dotnet-version: '7.0.x'
+
+- name: Restore dependencies
+run: dotnet restore ./Dotnet-health/src/Health_Services.sln
+
+- name: Build
+run: dotnet build  ./Dotnet-health/src/Health_Services.sln --configuration Release --no-restore
+-name: Publish
+ run: dotnet publish  ./Dotnet-health/src/Health_Services.sln --configuration Release --no-build
+
